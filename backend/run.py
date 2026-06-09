@@ -1,6 +1,6 @@
-from flask import Flask , jsonify
 from app.routes.transactions import transactions_bp
-app =Flask(__name__)
+from app import create_app
+app =create_app()
 app.register_blueprint(transactions_bp,url_prefix="/api/transactions")
 @app.route("/")
 def home():
