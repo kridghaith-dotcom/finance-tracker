@@ -2,6 +2,11 @@
   font-size: 24px;
   font-weight: 700;
 }
+.navbar{
+  background-color: #1e1b4b;
+  color: white;
+  padding: 16px 24px;
+}
 
 .container {
   max-width: 800px;
@@ -48,3 +53,33 @@
   display: flex;
   justify-content: space-between;
 }
+.card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-align: center;
+  flex: 1;
+}
+.cards-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.cards-row .card {
+  flex: 1;
+  text-align: center;
+}
+.cards-row h3 {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 8px;
+}
+.cards-row p {
+  font-size: 24px;
+  font-weight: 700;
+  color: #4f46e5;
+}
+.card-balance p { color: #4f46e5; }
+.card-income p  { color: #16a34a; }
+.card-expense p { color: #dc2626; }

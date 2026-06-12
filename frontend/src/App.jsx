@@ -27,12 +27,34 @@ function App() {
       )
     })
   }
+  const income = transaction
+  .filter(t => t.type === "income")
+  .reduce((sum, t) => sum + t.amount, 0)
+  const expenses = transaction
+  .filter(t => t.type === "expense")
+  .reduce((sum, t) => sum + t.amount, 0)
+  const balance = income - expenses
+  
   return (
     <div>
       <nav className="navbar"> <h1>Finance Tracker</h1> </nav>
       
       <div className="container">
         <p>Transactions :{transaction.length}</p>
+        <div className="cards-row">
+              <div className="card-balance">
+                <h3>Balance</h3>
+                <p>{balance} DT</p>
+              </div>
+              <div className="card-income">
+                <h3>Income</h3>
+                <p>{income} DT</p>
+              </div>
+              <div className="card-expense">
+                <h3>Expense</h3>
+                <p>{expenses} DT</p>
+              </div>
+        </div>
         <div className="form">
           <input type="text" placeholder="Amount" value={amount} onChange={e => setAmount(e.target.value)} />
           <input type="text" placeholder="Type (income/expense)" value={type} onChange={e => seTtype(e.target.value)} />
