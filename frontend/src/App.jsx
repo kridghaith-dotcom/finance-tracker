@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import './App.css'
 
 
 function App() {
@@ -28,18 +29,25 @@ function App() {
   }
   return (
     <div>
-      <h1>Finance Tracker</h1>
-      <p>Transactions :{transaction.length}</p>
-      <ul>
-        <li><input type="text" value={amount} onChange={e => setAmount(e.target.value)} /></li>
-        <li><input type="text" value={type} onChange={e => seTtype(e.target.value)} /></li>
-        <li><input type="text" value={category} onChange={e => setCategory(e.target.value)} /></li>
-        <li><input type="text" value={description} onChange={e => setDescription(e.target.value)} /></li>
-      </ul>
-      <button onClick={addTransaction}>Add</button>
-      {transaction.map(t => (
-        <p key={t.id}>{t.description} - {t.amount} - {t.category}</p>
-      ))}
+      <nav className="navbar"> <h1>Finance Tracker</h1> </nav>
+      
+      <div className="container">
+        <p>Transactions :{transaction.length}</p>
+        <div className="form">
+          <input type="text" placeholder="Amount" value={amount} onChange={e => setAmount(e.target.value)} />
+          <input type="text" placeholder="Type (income/expense)" value={type} onChange={e => seTtype(e.target.value)} />
+          <input type="text" placeholder="Category" value={category} onChange={e => setCategory(e.target.value)} />
+          <input type="text" placeholder="Description" value={description} onChange={e => setDescription(e.target.value)} />
+          <button className="btn" onClick={addTransaction}>Add</button>
+        </div>
+       {transaction.map(t => (
+        <div className="transaction-item" key={t.id}>
+          <span>{t.description}</span>
+          <span>{t.category}</span>
+          <span>{t.amount} DT</span>
+        </div>
+))}
+      </div>
     </div>
   )
 
