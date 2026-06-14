@@ -27,6 +27,12 @@ function App() {
       )
     })
   }
+  const deleteTransaction = (id) => {
+    axios.delete(`http://localhost:5000/api/transactions/${id}`)
+      .then(() => axios.get("http://localhost:5000/api/transactions/").then(response =>
+        setTransaction(response.data.transactions)
+      ))
+  }
   const income = transaction
   .filter(t => t.type === "income")
   .reduce((sum, t) => sum + t.amount, 0)
@@ -67,6 +73,7 @@ function App() {
           <span>{t.description}</span>
           <span>{t.category}</span>
           <span>{t.amount} DT</span>
+          <button onClick={()=>deleteTransaction(t.id)}>Delete</button>
         </div>
 ))}
       </div>

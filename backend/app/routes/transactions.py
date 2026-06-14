@@ -31,5 +31,12 @@ def add_transaction():
     db.session.add(new_transaction)
     db.session.commit()
     return jsonify({"status":"success","message":"Transaction added"})
+@transactions_bp.route("/<int:id>",methods=["DELETE"])
+def del_transaction(id):
+    transaction=Transaction.query.get(id)
+    db.session.delete(transaction)
+    db.session.commit()
+    return jsonify({"status":"success","message":"Transaction deleted"})
+
 
 
