@@ -58,7 +58,7 @@ function App() {
       <nav className="navbar"> <h1>Finance Tracker</h1> </nav>
 
       <div className="container">
-        <p>Transactions :{transaction.length}</p>
+        <p className="transaction-count">Transactions :{transaction.length}</p>
         <div className="cards-row">
           <div className="card-balance">
             <h3>Balance</h3>
@@ -81,14 +81,18 @@ function App() {
           <button className="btn" onClick={addTransaction}>Add</button>
         </div>
         {transaction.map(t => (
-          <div className="transaction-item" key={t.id}>
+          <div className="transaction-item" key={t.id}style={{
+            borderLeft: `4px solid ${t.type === "income" ? "#16a34a" : "#dc2626"}`
+          }}>
             <span>{t.description}</span>
             <span>{t.category}</span>
             <span>{t.amount} DT</span>
-            <button onClick={() => deleteTransaction(t.id)}>Delete</button>
+            <button className="btndel" onClick={() => deleteTransaction(t.id)}>Delete</button>
           </div>
         ))}
-        <PieChart width={400} height={300}>
+        <div style={{textAlign:"center",marginTop:"24px"}}>
+          <h3 style={{marginBottom: "12px", color: "#888"}}>Spending by category</h3>
+          <PieChart width={400} height={300}>
           <Pie data={chartData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100}>
             {chartData.map((entry, index) => (
               <Cell key={index} fill={["#4f46e5", "#16a34a", "#dc2626", "#f59e0b"][index % 4]} />
@@ -97,6 +101,7 @@ function App() {
           <Tooltip />
           <Legend />
         </PieChart>
+        </div>
       </div>
     </div>
   )
