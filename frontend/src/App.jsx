@@ -4,7 +4,7 @@ import './App.css'
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts"
 
 function App() {
-
+  const API_URL = "https://finance-tracker-api-cxdc.onrender.com"
   const [transaction, setTransaction] = useState([]);
   const [amount, setAmount] = useState("");
   const [type, seTtype] = useState("");
@@ -14,28 +14,28 @@ function App() {
   const [answer, setAnswer] = useState("")
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/transactions/")
+    axios.get(`${API_URL}/api/transactions/`)
       .then(response => {
         setTransaction(response.data.transactions)
       })
   }, [])
 
   const addTransaction = () => {
-    axios.post("http://localhost:5000/api/transactions/", {
+    axios.post(`${API_URL}/api/transactions/`, {
       amount: amount,
       type: type,
       category: category,
       description: description
     }).then(() => {
-      axios.get("http://localhost:5000/api/transactions/").then(response =>
+      axios.get(`${API_URL}/api/transactions/`).then(response =>
         setTransaction(response.data.transactions)
       )
     })
   }
 
   const deleteTransaction = (id) => {
-    axios.delete(`http://localhost:5000/api/transactions/${id}`)
-      .then(() => axios.get("http://localhost:5000/api/transactions/").then(response =>
+    axios.delete(`${API_URL}/api/transactions/${id}`)
+      .then(() => axios.get(`${API_URL}/api/transactions/`).then(response =>
         setTransaction(response.data.transactions)
       ))
   }
@@ -56,7 +56,7 @@ function App() {
   const balance = income - expenses
 
   const askAI = () => {
-    axios.post("http://localhost:5000/api/ai/", {
+    axios.post(`${API_URL}/api/ai/`, {
         question: question
     }).then(response => {
         setAnswer(response.data.answer)
