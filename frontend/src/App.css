@@ -137,3 +137,55 @@
   color: #888;
   margin-bottom: 16px;
 }
+
+.ai-chat {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-top: 24px;
+}
+
+.ai-chat h3 {
+  font-size: 16px;
+  color: #1e1b4b;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.ai-chat input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.ai-answer {
+  margin-top: 16px;
+  padding: 14px;
+  background: #f0f2ff;
+  border-radius: 8px;
+  border-left: 4px solid #4f46e5;
+  color: #333;
+  line-height: 1.6;
+}
+.form {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+}
+
+.transaction-item:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+.navbar {
+  background: linear-gradient(135deg, #1e1b4b, #4f46e5);
+}
